@@ -9,6 +9,9 @@ class Address(models.Model):
     street_number = models.CharField(max_length=10)
     additional = models.CharField(max_length=255, blank=True, default='')
 
+    def __str__(self):
+        return f"{self.city}, {self.street_name}, {self.street_number}"
+
 
 class Vendor(models.Model):
     business_code = models.CharField(max_length=100, primary_key=True)
@@ -18,3 +21,6 @@ class Vendor(models.Model):
                                 related_name='vendors')
     name = models.CharField(max_length=100, db_index=True)
     owner = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name

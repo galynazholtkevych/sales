@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
+from django.urls import reverse_lazy
+from django.views.generic import RedirectView
 from django.urls import path
 
 
@@ -28,8 +30,7 @@ router.register('products', ProductViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api-customauth/',
-        include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(router.urls))
-
+    url(r'^api-customauth/',        include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include(router.urls)),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy("admin:index"))),
 ]
