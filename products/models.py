@@ -2,6 +2,13 @@ from django.db import models
 from vendors.models import Vendor
 
 
+class Category(models.Model):
+
+    category_name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, default='')
+    code = models.IntegerField()
+
+
 class Product(models.Model):
 
     name = models.CharField(max_length=255)
@@ -10,6 +17,8 @@ class Product(models.Model):
     stock_available = models.IntegerField(default=0)
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE,
                                related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 related_name='products')
 
     def __str__(self):
         return self.name
