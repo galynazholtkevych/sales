@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url, include
+from django.conf.urls import url, include, i18n
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView
 from django.urls import path
@@ -29,8 +29,13 @@ router = DefaultRouter()
 router.register('products', ProductViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^api-customauth/',        include('rest_framework.urls', namespace='rest_framework')),
+    #path('admin/', admin.site.urls),
+    url(r'^api-customauth/', include('rest_framework.urls',
+                                     namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
     url(r'^$', RedirectView.as_view(url=reverse_lazy("admin:index"))),
 ]
+
+urlpatterns += i18n.i18n_patterns(
+    path(r'admin/', admin.site.urls),
+)
