@@ -1,7 +1,12 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class Address(models.Model):
+    class Meta:
+        verbose_name = _('Address')
+        verbose_name_plural = _('Addresses')
+
     postal_code = models.CharField(max_length=10)
     country = models.CharField(max_length=20)
     city = models.CharField(max_length=20)

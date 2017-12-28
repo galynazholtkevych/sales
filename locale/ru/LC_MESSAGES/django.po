@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-26 10:57+0000\n"
+"POT-Creation-Date: 2017-12-28 10:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,14 @@ msgstr ""
 msgid "Common configuration"
 msgstr "Общая конфигурация"
 
+#: common/models.py:7
+msgid "Address"
+msgstr "Адрес"
+
+#: common/models.py:8
+msgid "Addresses"
+msgstr "Адреса"
+
 #: customauth/apps.py:7
 msgid "Custom Authentication"
 msgstr "Переопределенная аутентификация"
@@ -32,14 +40,34 @@ msgstr "Переопределенная аутентификация"
 msgid "Customers"
 msgstr "Покупатели"
 
-#: products/apps.py:7
+#: products/apps.py:7 products/models.py:19
 msgid "Products"
 msgstr "Продукты"
 
-#: sales/settings.py:143
+#: products/models.py:8
+msgid "Category"
+msgstr "Категория"
+
+#: products/models.py:9
+msgid "Categories"
+msgstr "Категории"
+
+#: products/models.py:18
+msgid "Product"
+msgstr "Продукт"
+
+#: sales/settings.py:144
+msgid "English"
+msgstr "Английский"
+
+#: sales/settings.py:145
 msgid "Russian"
 msgstr "Русский"
 
-#: vendors/apps.py:7
+#: vendors/apps.py:7 vendors/models.py:9
 msgid "Vendors"
 msgstr "Продавцы"
+
+#: vendors/models.py:8
+msgid "Vendor"
+msgstr "Продавец"

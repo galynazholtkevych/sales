@@ -1,8 +1,12 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from vendors.models import Vendor
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
     category_name = models.CharField(max_length=255)
     description = models.TextField(blank=True, default='')
@@ -10,6 +14,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    class Meta:
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')
 
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, default='')

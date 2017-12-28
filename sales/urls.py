@@ -23,17 +23,18 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from products.views import ProductViewSet
-
+from products import urls as products_urls
 
 router = DefaultRouter()
 router.register('products', ProductViewSet)
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    url(r'^products/', include(products_urls, namespace='products')),
     url(r'^api-customauth/', include('rest_framework.urls',
                                      namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
     url(r'^$', RedirectView.as_view(url=reverse_lazy("admin:index"))),
+    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += i18n.i18n_patterns(

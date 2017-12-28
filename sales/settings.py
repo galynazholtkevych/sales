@@ -77,7 +77,7 @@ ROOT_URLCONF = 'sales.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,13 +140,13 @@ USE_TZ = True
 from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
+    ('en', _('English')),
     ('ru', _('Russian')),
 )
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
