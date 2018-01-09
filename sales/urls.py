@@ -24,11 +24,13 @@ from rest_framework.routers import DefaultRouter
 
 from products.views import ProductViewSet
 from products import urls as products_urls
+from orders import urls as orders_urls
 
 router = DefaultRouter()
 router.register('products', ProductViewSet)
 
 urlpatterns = [
+    url(r'^orders/', include(orders_urls, namespace='orders')),
     url(r'^products/', include(products_urls, namespace='products')),
     url(r'^api-customauth/', include('rest_framework.urls',
                                      namespace='rest_framework')),
