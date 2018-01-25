@@ -11,6 +11,13 @@
 </head>
 <body>
 {% block content %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'customauth:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'customauth:register' %}">Register or</a>
+        <a href="{% url 'customauth:login' %}">Login</a>
+        <a href="{% url 'customauth:api-login' %}">API Login</a>
+    {% endif %}
 
 {% endblock %}
 

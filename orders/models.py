@@ -11,3 +11,5 @@ class Order(models.Model):
     product = models.ManyToManyField(Product, related_name='orders')
     custom_address = models.ForeignKey(Address, on_delete=models.SET_NULL,
                                        null=True)
+    def __str__(self):
+        return f'{self.id} order of customer {self.customer.full_name}'

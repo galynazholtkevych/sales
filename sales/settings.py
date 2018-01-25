@@ -50,14 +50,17 @@ INSTALLED_APPS = [
 ]
 
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 AUTH_USER_MODEL = 'customauth.CustomUser'
@@ -75,6 +78,11 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'sales.urls'
+
+from django.urls import reverse_lazy
+
+LOGIN_URL = reverse_lazy('customauth:login')
+LOGIN_REDIRECT_URL = reverse_lazy('orders:create_order')
 
 TEMPLATES = [
     {

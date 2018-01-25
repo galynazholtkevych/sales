@@ -22,20 +22,27 @@ from django.urls import path
 
 from rest_framework.routers import DefaultRouter
 
+from customauth import urls as auth_urls
+from customers import urls as customers_urls
 from products.views import ProductViewSet
 from products import urls as products_urls
 from orders import urls as orders_urls
+
+from .views import IndexView
+
 
 router = DefaultRouter()
 router.register('products', ProductViewSet)
 
 urlpatterns = [
+    url(r'^auth/', include(auth_urls, namespace='customauth')),
+    url(r'^customers/', include(customers_urls, namespace='customers')),
     url(r'^orders/', include(orders_urls, namespace='orders')),
     url(r'^products/', include(products_urls, namespace='products')),
     url(r'^api-customauth/', include('rest_framework.urls',
                                      namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
-    url(r'^$', RedirectView.as_view(url=reverse_lazy("admin:index"))),
+    url(r'^$', IndexView.as_view()),
     path('admin/', admin.site.urls),
 ]
 

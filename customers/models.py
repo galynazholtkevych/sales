@@ -15,3 +15,10 @@ class Customer(models.Model):
                                     verbose_name='Phone Number')
     gender = models.CharField(max_length=2, verbose_name='Gender',
                               choices=GENDER_CHOICES)
+
+    def __str__(self):
+        return self.full_name
+
+    @property
+    def full_name(self):
+        return f'{self.user.first_name} {self.user.last_name}'
